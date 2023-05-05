@@ -5,8 +5,6 @@ package com.carl.api.statement;
  * @version 1.0
  */
 
-import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 
 /**
@@ -17,7 +15,7 @@ import java.sql.*;
  *      ResultSet
  */
 public class StatementQueryPart {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         //1.注册驱动
         /**
@@ -26,7 +24,8 @@ public class StatementQueryPart {
          *      依赖:驱动版本是8+ com.mysql.cj.jdbc.Driver
          *          驱动版本是5+ com.mysql.jdbc.Driver
          */
-        DriverManager.registerDriver(new Driver());
+        //DriverManager.registerDriver(new Driver());
+        Class.forName("com.mysql.cj.jdbc.Driver");
         //2.获取链接
         /**
          * TODO:
@@ -49,7 +48,7 @@ public class StatementQueryPart {
 
         // java.sql接口 = 实现类
         Connection connection = DriverManager
-                .getConnection("jdbc:mysql://127.0.0.1:3306/atguigu", "root", "kou123..");
+                .getConnection("jdbc:mysql://127.0.0.1:3306/atguigu", "root", "123456");
         //3.创建statement
         Statement statement = connection.createStatement();
         //4.发送sql语句,并且返回结果

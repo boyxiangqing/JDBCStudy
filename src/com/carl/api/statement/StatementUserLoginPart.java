@@ -1,6 +1,5 @@
 package com.carl.api.statement;
 
-import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.Properties;
@@ -60,7 +59,7 @@ public class StatementUserLoginPart {
          *          7. 程序的入口main
          *
          */
-        DriverManager.registerDriver(new Driver());
+        //DriverManager.registerDriver(new Driver());
 
         //字符串 -> 提取到外部的配置文件 -> 可以在不改变代码的情况下,完成数据库驱动的切换!
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -90,15 +89,15 @@ public class StatementUserLoginPart {
          *     String url           jdbc:mysql://localhost:3306/atguigu?user=root&password=kou123..
          */
         Connection connection =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu","root","kou123..");
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu","root","123456");
 
-        Properties info = new Properties();
-        info.put("user","root");
-        info.put("password","kou123..");
-        Connection connection1 =
-                DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/atguigu", info);
-        Connection connection2 =
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu?user=root&password=kou123..");
+//        Properties info = new Properties();
+//        info.put("user","root");
+//        info.put("password","123456");
+//        Connection connection1 =
+//                DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/atguigu", info);
+//        Connection connection2 =
+//                DriverManager.getConnection("jdbc:mysql://localhost:3306/atguigu?user=root&password=123456");
         // 3.创建发送Sql语句的Statement对象
         Statement statement = connection.createStatement();
         //4.发送SQL语句(1.编写SQL语句 2.发送SQL语句)
